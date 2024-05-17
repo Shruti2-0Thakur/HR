@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title></title>
+    <link href="./lib/font-awesome/css/all.css" rel="stylesheet" />
+    <%@ Import Namespace="System.Web.UI.WebControls" %>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #003C43;
+            padding-top: 20px;
+            color: #ffffff;
+        }
+
+        #sidebar .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #sidebar .logo h1 {
+            margin-top:10px;
+            font-size: 48px;
+            margin-left: 20px; /* Adjusted margin */
+            color: #ffffff;
+        }
+
+        #sidebar .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #sidebar .nav-links li {
+            padding: 10px;
+        }
+
+        #sidebar .nav-links li a {
+            color: #ffffff;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        #sidebar .sub-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-left: 20px;
+            display: none;
+        }
+
+        #sidebar .sub-links li {
+            padding: 5px;
+        }
+
+        #sidebar .sub-links li a {
+            color: #ffffff;
+            font-weight: 400;
+            text-decoration: none;
+        }
+
+        /* Style for Font Awesome icons */
+        .fa {
+            font-size: 20px;
+        }
+
+        /* Style for the dropdown arrow */
+        .arrow {
+            margin-left: auto;
+            margin-right: 10px; /* Adjusted margin */
+            transform: rotate(0deg);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links li.open .arrow {
+            transform: rotate(90deg);
+        }
+
+        /* Style for back arrow icon */
+        #backArrow {
+            position: fixed;
+            top: 35px;
+            left: 254px;
+            color: #135D66;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div id="sidebar">
+                <div class="logo">
+                    <h1>Logo</h1>
+                </div>
+                <ul class="nav-links">
+                    <li class="parent">
+                        <a href="#">
+                            <span style="padding-right:16px; font-size:20px;"><i class="fas fa-tachometer-alt"></i></span> Hiring Management
+                            <span  style="padding-right:10px;" class="arrow fas fa-chevron-right"></span>
+                        </a>
+                        <ul class="sub-links">
+                            <li><a href="Admindashboard.aspx"><span style="padding-right:16px; font-size:20px;"><i class="fas fa-chart-line"></i></span> Dashboard</a></li>
+                            <li><a href="Job.aspx"><span style="padding-right:16px; font-size:20px;"><i class="fas fa-briefcase"></i></span> Job Opening</a></li>
+                            <li><a href="Stages.aspx"><span style="padding-right:16px; font-size:20px;"><i class="fas fa-cog"></i></span> Setup</a></li>
+                           
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#staff">
+                            <span style="padding-right:16px; font-size:20px;"><i class="fas fa-users"></i></span> Staff Management
+                        </a>
+                        <ul class="sub-links">
+                            <li><a href="#item1"><span><i class="fas fa-chart-line"></i></span> Dashboard</a></li>
+                            <li><a href="#item2"><span><i class="fas fa-list"></i></span> Staff List</a></li>
+                            <li><a href="#item3"><span><i class="fas fa-user-plus"></i></span> Add New Staff</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#leave">
+                            <span style="padding-right:16px; font-size:20px;"><i class="fas fa-calendar-alt"></i></span> Leave Management
+                        </a>
+                        <ul class="sub-links">
+                            <!-- Add sub-links for Leave Management if needed -->
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#attendance">
+                            <span style="padding-right:16px; font-size:20px;"><i class="far fa-clock"></i></span> Attendance Management
+                        </a>
+                        <ul class="sub-links">
+                            <!-- Add sub-links for Attendance Management if needed -->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div id="main">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+    
+    <!-- Back arrow icon -->
+    <div id="backArrow" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+    
+    <!-- JavaScript function to go back to the previous page -->
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    
+    <!-- JavaScript to toggle the submenu on click -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const parentLinks = document.querySelectorAll('.parent > a');
+
+            parentLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const parentLi = this.parentElement;
+                    parentLi.classList.toggle('open');
+                    const subMenu = parentLi.querySelector('.sub-links');
+                    const arrowIcon = parentLi.querySelector('.arrow');
+                    subMenu.style.display = parentLi.classList.contains('open') ? 'block' : 'none';
+                    arrowIcon.style.transform = parentLi.classList.contains('open') ? 'rotate(90deg)' : 'rotate(0deg)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
