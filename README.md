@@ -2,7 +2,7 @@
 
 The HR Management System is a web application designed to streamline the hiring process, manage candidates, and facilitate HR operations. It includes features for job posting, candidate application, resume viewing, interview scheduling, and email notifications.
 
-![HR Management System Demo](https://drive.google.com/file/d/1Y6quyBAhUqFcU1_ET_WwyN6_hUjFb_qI/view?usp=sharing)
+![HR Management System Demo](picture/hr.png)
 
 ## Features
 
@@ -23,16 +23,20 @@ The HR Management System is a web application designed to streamline the hiring 
 
 ## Screenshots
 
-![Job Posting](path/to/job-posting.png)
+![Job Posting](picture/job.png)
 *Job Posting Page*
 
-![Candidate List](path/to/candidate-list.png)
+![Add Job List](picture/add.png)
+*Add Job*
+
+![Candidate List](picture/candidate.png)
 *Candidate List Page*
 
-![Resume Preview](path/to/resume-preview.png)
+![Resume Preview](picture/resume.png)
 *Resume Preview Page*
 
-![Interview Scheduling](path/to/interview-scheduling.png)
-*Interview Scheduling Page*
+![Set Up Preview](picture/setup.png)
+*Set Up Page*
+
 
 
