@@ -2,6 +2,12 @@
 
 The HR Management System is a web application designed to streamline the hiring process, manage candidates, and facilitate HR operations. It includes features for job posting, candidate application, resume viewing, interview scheduling, and email notifications.
 
+<p align="center">
+  <strong>
+    You can view the demo of the project <a href="https://tourmaline-waterfall-2d6.notion.site/Hiring-Management-System-f9fa0a393d9f4966a1f991049ad7881c">here</a>.
+  </strong>
+</p>
+
 ![HR Management System Demo](picture/hr.png)
 
 ## Features
